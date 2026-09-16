@@ -19,7 +19,6 @@ spec:
       containers:
       - name: ollama
         image: ollama/ollama:latest
-        imagePullPolicy: IfNotPresent # 关键！强制使用本地镜像
         ports:
         - containerPort: 11434
         env:
