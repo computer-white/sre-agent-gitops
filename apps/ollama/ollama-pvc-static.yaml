@@ -8,5 +8,5 @@ spec:
     - ReadWriteOnce
   resources:
     requests:
-      storage: 50Gi
-  storageClassName: manual  # 必须与 PV 的 storageClassName 匹配
+      storage: 10Gi
+  storageClassName: nfs-cli 
