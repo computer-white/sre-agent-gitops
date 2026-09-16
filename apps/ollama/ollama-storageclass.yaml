@@ -2,12 +2,13 @@ apiVersion: storage.k8s.io/v1
 kind: StorageClass
 metadata:
   name: nfs-csi
+  labels:
+    app.kubernetes.io/instance: ollama
 provisioner: nfs.csi.k8s.io
 parameters:
-  server: 192.168.30.11          # 你的 NFS 服务器地址
+  server: 192.168.30.11
   share: /nfsshare
-  subDir: "ollama/${pvc.metadata.namespace}/${pvc.metadata.name}"  # 自定义目录结构
-  onDelete: "retain"              # 建议保留数据
+  subDir: "ollama/${pvc.metadata.namespace}/${pvc.metadata.name}"
 reclaimPolicy: Retain
 volumeBindingMode: WaitForFirstConsumer
 allowVolumeExpansion: true
