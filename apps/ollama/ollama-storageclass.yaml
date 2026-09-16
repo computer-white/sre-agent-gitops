@@ -4,9 +4,11 @@ metadata:
   name: nfs-csi
 provisioner: nfs.csi.k8s.io
 parameters:
-  server: 192.168.30.11   # 替换为你的 NFS 服务器 IP
-  share: /nfsshare         # 替换为你的共享目录
-reclaimPolicy: Delete
+  server: 192.168.30.11          # 你的 NFS 服务器地址
+  share: /nfsshare
+  subDir: "ollama/${pvc.metadata.namespace}/${pvc.metadata.name}"  # 自定义目录结构
+  onDelete: "retain"              # 建议保留数据
+reclaimPolicy: Retain
 volumeBindingMode: WaitForFirstConsumer
 allowVolumeExpansion: true
 mountOptions:
